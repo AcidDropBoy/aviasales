@@ -1,0 +1,44 @@
+$color-dfe5ec: #dfe5ec;
+$color-white: #fff;
+$color-2196f3: #2196f3;
+
+.sort {
+	cursor: pointer;
+}
+
+.conteiner__sort {
+	margin-bottom: 20px;
+}
+
+.item {
+	padding: 15px 0;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 20px;
+	display: flex;
+	justify-content: center;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	background: $color-white;
+	border: 1px solid $color-dfe5ec;
+	border-radius: 0 5px 5px 0;
+	box-sizing: border-box;
+}
+
+.active,
+.item_border-l {
+	border-radius: 5px 0 0 5px
+}
+
+.active {
+	background: $color-2196f3;
+	color: $color-white;
+}
+
+button {
+	all: unset;
+}
+
+.active_border-r {
+	border-radius: 0 5px 5px 0;
+}

@@ -1,0 +1,43 @@
+$color-a0b0b9: #a0b0b9;
+$color-white: #fff;
+$color-2196f3: #2196f3;
+
+.ticket__head {
+	margin-bottom: 26px;
+}
+
+.logo {
+	display: flex;
+}
+
+.price {
+	color: $color-2196f3;
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.ticket {
+	padding: 20px;
+	background: $color-white;
+	box-shadow:0 2px 8px rgba(0,0,0,.1);
+	border-radius:5px
+}
+
+.text-info {
+	display:flex;
+	flex-direction:column;
+	font-size:12px
+}
+
+.text-info_gray {
+	color:$color-a0b0b9;
+	text-transform:uppercase
+}
+
+.ticket_m-b-10 {
+	margin-bottom:10px
+}
+
+.ticket_m-b-20 {
+	margin-bottom:20px
+}
