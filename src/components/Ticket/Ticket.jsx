@@ -10,11 +10,18 @@ const Ticket = ({ price, carrier, segments }) => {
     const min = time % 60;
     return `${hour} ч ${min} м`;
   };
-  const dataTicket = (value) => {
-    const array = value.split('T');
-    const day = array[0];
-    const time = array[1].split('.')[0];
-    return `${day} ${time}`;
+  const dataTicket = (firstValue, secondValue) => {
+    const array = firstValue.split('T');
+    const firstTime = array[1].split(':00.')[0];
+    const firstTimeHour = Number(`${firstTime[0]}${firstTime[1]}`);
+    const firstTimeMinutes = Number(`${firstTime[3]}${firstTime[4]}`);
+    const minutes = firstTimeHour * 60 + firstTimeMinutes + Number(secondValue);
+    const hour = Math.round(minutes / 60);
+    const finalHour = hour <= 24 ? hour : hour - 24;
+    const min = minutes % 60;
+    const finalMin = `${min}`.length > 1 ? min : `0${min}`;
+
+    return `${firstTime} - ${finalHour}:${finalMin}`;
   };
   return (
     <div className={`${scss.ticket} ${scss['ticket_m-b-20']}`}>
@@ -31,7 +38,7 @@ const Ticket = ({ price, carrier, segments }) => {
           <span className={scss['text-info_gray']}>
             {segments[0].origin}-{segments[0].destination}
           </span>
-          <span>{dataTicket(segments[0].date)}</span>
+          <span>{dataTicket(segments[0].date, segments[0].duration)}</span>
         </Col>
         <Col span={8} className={scss['text-info']}>
           <span className={scss['text-info_gray']}>В пути</span>
@@ -39,7 +46,7 @@ const Ticket = ({ price, carrier, segments }) => {
         </Col>
         <Col span={8} className={scss['text-info']}>
           <span className={scss['text-info_gray']}>
-            {segments[0].stops.length ? `${segments[0].stops.length} пересадки` : null}
+            {segments[0].stops.length ? `${segments[0].stops.length} пересадки` : 'Без пересадок'}
           </span>
           <span>{segments[0].stops.join(', ')}</span>
         </Col>
@@ -49,7 +56,7 @@ const Ticket = ({ price, carrier, segments }) => {
           <span className={scss['text-info_gray']}>
             {segments[1].origin}-{segments[1].destination}
           </span>
-          <span>{dataTicket(segments[1].date)}</span>
+          <span>{dataTicket(segments[1].date, segments[1].duration)}</span>
         </Col>
         <Col span={8} className={scss['text-info']}>
           <span className={scss['text-info_gray']}>В пути</span>
@@ -57,7 +64,7 @@ const Ticket = ({ price, carrier, segments }) => {
         </Col>
         <Col span={8} className={scss['text-info']}>
           <span className={scss['text-info_gray']}>
-            {segments[1].stops.length ? `${segments[1].stops.length} пересадки` : null}
+            {segments[1].stops.length ? `${segments[1].stops.length} пересадки` : 'Без пересадок'}
           </span>
           <span>{segments[1].stops.join(', ')}</span>
         </Col>

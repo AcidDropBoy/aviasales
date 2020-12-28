@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import clsx from 'clsx';
 import { Row, Col } from 'antd';
 import * as actions from '../../system/actions';
-import ItemSort from './ItemSort';
+import ItemSort from './ItemSort/ItemSort';
 import style from './sort.module.scss';
 
 const Sort = ({ sort, cheap, fast, sortCreator }) => {

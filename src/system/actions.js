@@ -1,6 +1,7 @@
 import Api from './api';
 
 const getApi = new Api();
+
 export const cheap = () => {
   return { type: 'CHEAP' };
 };
@@ -44,7 +45,17 @@ export const reDownload = () => {
 export const upViewTickets = () => {
   return { type: 'UP_VIEW_TICKETS' };
 };
-
+export const reDownloadCreator = (apiKeyState) => (dispatch) => {
+  dispatch(reDownload());
+  getApi
+    .getApiTicket(apiKeyState)
+    .then((res) => {
+      dispatch(getTickes(res.tickets, res.stop));
+    })
+    .catch(() => {
+      dispatch(getError());
+    });
+};
 export const getTickesCreator = (apiKeyState) => (dispatch) => {
   getApi
     .getApiTicket(apiKeyState)
@@ -70,15 +81,4 @@ export const apiKeyCreator = () => (dispatch) => {
 };
 export const upViewTicketsCreator = () => (dispatch) => {
   dispatch(upViewTickets());
-};
-export const reDownloadCreator = (apiKeyState) => (dispatch) => {
-  dispatch(reDownload());
-  getApi
-    .getApiTicket(apiKeyState)
-    .then((res) => {
-      dispatch(getTickes(res.tickets, res.stop));
-    })
-    .catch(() => {
-      dispatch(getError());
-    });
 };

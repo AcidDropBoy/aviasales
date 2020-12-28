@@ -8,6 +8,10 @@ $color-2196f3: #2196f3;
 
 .conteiner__sort {
 	margin-bottom: 20px;
+
+	@media all and (max-width:420px) {
+		margin-top: 20px;
+	}
 }
 
 .item {

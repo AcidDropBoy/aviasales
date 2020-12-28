@@ -16,10 +16,10 @@ const defaultState = {
 };
 const isFilter = ({ noTransfers, oneTransfer, twoTransfer, threeTransfer, all }, item) => {
   if (
-    (item.segments[0].stops.length === 0 && noTransfers) ||
-    (item.segments[0].stops.length === 1 && oneTransfer) ||
-    (item.segments[0].stops.length === 2 && twoTransfer) ||
-    (item.segments[0].stops.length === 3 && threeTransfer) ||
+    (item.segments[0].stops.length === 0 && item.segments[1].stops.length === 0 && noTransfers) ||
+    (item.segments[0].stops.length === 1 && item.segments[1].stops.length === 1 && oneTransfer) ||
+    (item.segments[0].stops.length === 2 && item.segments[1].stops.length === 2 && twoTransfer) ||
+    (item.segments[0].stops.length === 3 && item.segments[1].stops.length === 3 && threeTransfer) ||
     all
   ) {
     return true;
@@ -133,8 +133,7 @@ const reducer = (state = defaultState, action) => {
         loadingStop: action.load,
       };
     }
-    case 'LOADING_STOP':
-      return { ...state, loadingStop: true };
+
     case 'API_KEY':
       return { ...state, apiKey: action.key };
     case 'ERROR':

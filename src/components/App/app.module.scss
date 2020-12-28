@@ -2,12 +2,7 @@ $color-f3f7fa: #f3f7fa;
 
 .container {
 	background: $color-f3f7fa;
-	max-width: 990px;
 	padding: 20px 0;
-}
-
-.body__container {
-	margin: 0 auto;
 }
 
 .logo {
@@ -16,4 +11,10 @@ $color-f3f7fa: #f3f7fa;
 	top: 5%;
 	display: block;
 	position: relative
+}
+
+.tickets {
+	@media all and (max-width:575px) {
+		width: 90%;
+	}
 }

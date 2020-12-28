@@ -3,9 +3,9 @@ import { Row, Col } from 'antd';
 import style from './app.module.scss';
 import logo from './Logo.png';
 import 'antd/dist/antd.css';
-import Filter from '../Filter';
-import Sort from '../Sort';
-import TicketsList from '../TicketsList';
+import Filter from '../Filter/Filter';
+import Sort from '../Sort/Sort';
+import TicketsList from '../TicketsList/TicketsList';
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
         <Col sm={{ span: 24 }} lg={{ span: 6 }}>
           <Filter />
         </Col>
-        <Col sm={{ span: 24 }} lg={{ span: 10 }}>
+        <Col sm={{ span: 24 }} lg={{ span: 10 }} className={style.tickets}>
           <Sort />
           <TicketsList />
         </Col>

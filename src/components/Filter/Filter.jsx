@@ -6,7 +6,7 @@ import { Row, Col, Checkbox } from 'antd';
 import * as actions from '../../system/actions';
 import 'antd/dist/antd.css';
 import style from './filter.module.scss';
-import ItemFilter from './ItemFilter';
+import ItemFilter from './ItemFilter/ItemFilter';
 
 const Filter = ({
   filter,
